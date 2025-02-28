@@ -1,0 +1,276 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- meta data -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--font-family-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+    <!-- title of site -->
+    <title>Sign Animator</title>
+    <!-- For favicon png -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/logo/apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/logo/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/logo/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/logo/site.webmanifest') }}">
+
+    <!--font-awesome.min.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <!--linear icon css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/linearicons.css') }}">
+    <!--animate.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+    <!--flaticon.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    <!--slick.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick-theme.css') }}">
+    <!--bootstrap.min.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- bootsnav -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootsnav.css') }}">
+    <!--style.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!--responsive.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+
+<body>
+    <section class="top-area">
+        <div class="header-area">
+            <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="index.html">Sign<span>Animator</span></a>
+                    </div>
+                    <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li class=" scroll active"><a href="#home">home</a></li>
+                            <li class="scroll"><a href="#statistics">Statistics</a></li>
+                            <li class="scroll"><a href="#ourTeam">Our Team</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+
+    <!-- type story -->
+    <section id="home" class="welcome-hero">
+        <div class="container">
+            <div class="welcome-hero-txt">
+                <h2>Transform Sinhala Text into Engaging<br>Sri Lanakan Sign Language Animations </h2>
+                <p>
+                    "Sign Language is the Voice of the Heart. Embrace it, Empower it, and Let Your Stories Shine."
+                </p>
+            </div>
+            <div class="welcome-hero-serch-box">
+                <form id="translateForm">
+                    <div class="welcome-hero-serch-box">
+                        <textarea id="sinhalaText" name="sinhala_text" rows="4" placeholder="       Input Your Sinhala story...."></textarea>
+                        <div class="welcome-hero-serch">
+                            <button id="generateBtn" class="welcome-hero-btn" type="submit">
+                                Generate
+                                &nbsp;&nbsp;&nbsp;
+                                <div id="loadingIndicator" style="display: none;">
+                                    <div class="loader"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generated Video -->
+    <section id="explore" class="explore">
+        <div class="container">
+            <div class="section-header">
+                <h2>Animation</h2>
+                <p>"Embrace the beauty of sign language presentations and immerse yourself in the artistry of communication."</p>
+            </div>
+            <div class="explore-content">
+                <div class="single-explore-item">
+                    <div id="loadingIndicator2" style="display: none;">
+                        <p>Loading...</p> 
+                        &nbsp;&nbsp;&nbsp;
+                        <div class="loader"></div>
+                    </div>
+                    <video id="outputVideo" controls style="display: none;">
+                        <source id="videoSource" src="{{url_for('serve_output_file',filename='output.mp4')}}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- statistics -->
+    <section id="statistics"  class="statistics">
+        <div class="container">
+            <div class="statistics-counter"> 
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-ststistics-box">
+                        <div class="statistics-content">
+                            <div class="counter">4</div>
+                        </div>
+                        <h3>models</h3>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-ststistics-box">
+                        <div class="statistics-content">
+                            <div class="counter">100</div> <span>+</span>
+                        </div>
+                        <h3>animations</h3>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-ststistics-box">
+                        <div class="statistics-content">
+                            <div class="counter">65</div> <span>k+</span>
+                        </div>
+                        <h3>visitors</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section id="ourTeam" class="blog" >
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Team</h2>
+                <p>Add a team description</p>
+            </div>
+            <div class="blog-content">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="single-blog-item">
+                            <div class="single-blog-item-txt">
+                                <h2><a href="#">Sinhala Story Converts to an animation</a></h2>
+                                <h4>Implemented <span>by</span> <br/>  <a href="#">Lakshani</a></h4>
+                                    <br/><br/>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="single-blog-item">
+                            <div class="single-blog-item-txt">
+                                <h2><a href="#">Set of Images converts into a Sinhala Story</a></h2>
+                                <h4>Implemented <span>by</span> <br/>  <a href="#">Rashini</a></h4>
+                                    <br/><br/>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="single-blog-item">
+                            <div class="single-blog-item-txt">
+                                <h2><a href="#">Describe an sign animation</a></h2>
+                                <h4>Implemented <span>by</span> <br/>  <a href="#">Prabashi</a></h4>
+                                    <br/><br/>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="single-blog-item">
+                            <div class="single-blog-item-txt">
+                                <h2><a href="#">Sinhala Story Converts to an animation</a></h2>
+                                <h4>Implemented <span>by</span> <br/>  <a href="#">Nipuni</a></h4>
+                                    <br/><br/>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+
+    <!-- footer-copyright -->
+    <footer id="footer"  class="footer">
+        <div class="container">
+            <div class="footer-menu">
+                   <div class="row">
+                       <div class="col-sm-3">
+                            <div class="navbar-header">
+                            <a class="navbar-brand" href="index.html">Sign<span>Animator</span></a>
+                        </div><!--/.navbar-header-->
+                       </div>
+                       <div class="col-sm-9">
+                           <ul class="footer-menu-item">
+                            <li class=" scroll active"><a href="#home">home</a></li>
+                            <li class="scroll"><a href="#statistics">Statistics</a></li>
+                            <li class="scroll"><a href="#ourTeam">Our Team</a></li>
+                        </ul><!--/.nav -->
+                       </div>
+               </div>
+            </div>
+            <div class="hm-footer-copyright">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p>
+                            &copy;copyright. designed and developed by <a href="https://github.com/lakshani-98">Lakshani</a>
+                        </p><!--/p-->
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>	
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div><!--/.hm-footer-copyright-->
+        </div><!--/.container-->
+
+        <div id="scroll-Top">
+            <div class="return-to-top">
+                <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+            </div>
+            
+        </div><!--/.scroll-Top-->
+        
+    </footer>
+    <!-- jaquery link -->
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/generate.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/modernizr-2.8.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootsnav.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/feather.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slick.min.js') }}"></script>
+</body>
+
+</html>

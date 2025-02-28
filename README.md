@@ -1,1 +1,0 @@
-# Sinhala-Sign-Animator
